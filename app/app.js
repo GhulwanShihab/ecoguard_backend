@@ -33,10 +33,6 @@ const routes = require('#routes/');
 // (configure to only allow requests from certain origins).
 app.use(cors());
 
-// Set views path.
-app.set('views', __dirname+'/views');
-// Set template engine (Pug by default).
-app.set('view engine', 'pug');
 // Set folder for static contents.
 app.use(express.static('public'));
 

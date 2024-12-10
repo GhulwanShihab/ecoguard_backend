@@ -6,7 +6,6 @@
 const apiOptions = require('#configs/api');
 // Routes:
 const apiRoutes = require('#routes/api');
-const webRoutes = require('#routes/web');
 // Policies:
 const accessTokenMiddleware = require('#policies/accessToken.policy');
 const refreshTokenMiddleware = require('#policies/refreshToken.policy');
@@ -33,9 +32,6 @@ function _setUpRoutes(options={}) {
 			app.use(`/api/${versionString}`, mapRoutes(apiRoutes(versionString).public, 'app/controllers/api/'));
 			app.use(`/api/${versionString}/private`, mapRoutes(apiRoutes(versionString).private, 'app/controllers/api/'));
 		});
-
-		// Set web routes for Express appliction.
-		app.use('/', mapRoutes(webRoutes.public, `app/controllers/web/`));
 
 		// Everything's ok, continue.
 		return (req, res, next)=>next();
